@@ -1,5 +1,5 @@
 {
-  "name": "haveyouseen",
+  "name": "nested_tic_tac_toe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,9 +9,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "build:tailwind": "./node_modules/tailwindcss/lib/cli.js build src/tailwind.css -o src/tailwind.output.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +38,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
