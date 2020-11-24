@@ -1,9 +1,9 @@
 import React from "react";
 
-const Text = ({ style, text }) => {
+const Text = ({ customStyle, text }) => {
   return (
     <div className="flex justify-center">
-      <p className={style}>{text}</p>
+      <p className={customStyle}>{text}</p>
     </div>
   );
 };
