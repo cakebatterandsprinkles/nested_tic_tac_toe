@@ -11,7 +11,7 @@ const Game = () => {
   function renderSquare(i) {
     return (
       <button
-        className="title border border-white h-full w-full text-lg bold flex-1 focus:outline-none focus:bg-pink-200 "
+        className="title border border-white h-full w-full text-lg bold focus:outline-none focus:bg-pink-200 "
         onClick={() => selectSquare(i)}
       >
         {squares[i]}
@@ -69,7 +69,7 @@ const Game = () => {
       <span className="title text-6xl text-black absolute absolute-center">
         {winner}
       </span>
-      <div className="w-24 h-24 md:w-32 md:h-32 grid m-1 border border-white rounded-sm opacity-25">
+      <div className="grid grid-rows-3 w-24 h-24 md:w-32 md:h-32 m-1 border border-white rounded-sm opacity-25">
         <div className="flex bg-gray-200">
           {renderSquare(0)}
           {renderSquare(1)}
@@ -88,7 +88,7 @@ const Game = () => {
       </div>
     </div>
   ) : (
-    <div className="w-24 h-24 md:w-32 md:h-32 grid m-1 border border-white rounded-sm">
+    <div className="grid grid-rows-3 w-24 h-24 md:w-32 md:h-32 m-1 border border-white rounded-sm">
       <div className="flex bg-gray-200">
         {renderSquare(0)}
         {renderSquare(1)}
