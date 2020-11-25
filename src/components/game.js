@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles.css";
 
-const Game = ({ next, onPlay }) => {
+const Game = ({ next, onPlay, biggerBoardUpdate, position }) => {
   const [squares, setSquares] = React.useState(Array(9).fill(null));
 
   const winner = calculateWinner(squares);
@@ -9,7 +9,7 @@ const Game = ({ next, onPlay }) => {
   function renderSquare(i) {
     return (
       <button
-        className="title border border-white h-full w-full text-lg bold focus:outline-none focus:bg-green-100 "
+        className="title border border-white h-full w-full text-lg bold focus:outline-none focus:bg-green-100"
         onClick={() => selectSquare(i)}
       >
         {squares[i]}
@@ -38,8 +38,8 @@ const Game = ({ next, onPlay }) => {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    for (let condition of winningPositionsArray) {
-      const [a, b, c] = condition;
+    for (let i = 0; i < winningPositionsArray.length; i++) {
+      const [a, b, c] = winningPositionsArray[i];
       if (
         squares[a] &&
         squares[b] &&
@@ -52,6 +52,10 @@ const Game = ({ next, onPlay }) => {
     }
     return null;
   }
+
+  React.useEffect(() => {
+    biggerBoardUpdate(position, winner);
+  }, [winner, position]);
 
   return winner ? (
     <div className="relative">
