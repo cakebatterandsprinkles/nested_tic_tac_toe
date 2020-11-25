@@ -1,17 +1,15 @@
 import React from "react";
 import "../styles.css";
 
-const Game = () => {
+const Game = ({ next, onPlay }) => {
   const [squares, setSquares] = React.useState(Array(9).fill(null));
 
-  const nextValue = calculateNextValue(squares);
   const winner = calculateWinner(squares);
-  const status = calculateStatus(winner);
 
   function renderSquare(i) {
     return (
       <button
-        className="title border border-white h-full w-full text-lg bold focus:outline-none focus:bg-pink-200 "
+        className="title border border-white h-full w-full text-lg bold focus:outline-none focus:bg-green-100 "
         onClick={() => selectSquare(i)}
       >
         {squares[i]}
@@ -24,14 +22,9 @@ const Game = () => {
       return;
     }
     const squaresCopy = [...squares];
-    squaresCopy[square] = nextValue;
+    squaresCopy[square] = next;
     setSquares(squaresCopy);
-  }
-
-  function calculateNextValue(squares) {
-    const xCount = squares.filter((item) => item === "X").length;
-    const oCount = squares.filter((item) => item === "O").length;
-    return xCount === oCount ? "X" : "O";
+    onPlay();
   }
 
   function calculateWinner(squares) {
@@ -58,10 +51,6 @@ const Game = () => {
       }
     }
     return null;
-  }
-
-  function calculateStatus(winner) {
-    return winner ? winner : null;
   }
 
   return winner ? (

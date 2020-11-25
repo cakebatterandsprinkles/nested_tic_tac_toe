@@ -1,0 +1,7 @@
+1. Restart button
+2. Information Board Update with context API
+3. Dark mode with context API
+4. Nobody wins in smaller board logic - decide what to do
+5. Bigger board winning logic
+6. Final game winning alert
+7. Last thing to do: 2 people connection with random string, also maybe player names?
