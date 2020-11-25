@@ -39,6 +39,10 @@ const GameBoard = () => {
     return null;
   }
 
+  React.useEffect(() => {
+    return winner ? console.log(`Winner is ${winner}!!!!!`) : null;
+  }, [winner]);
+
   const onPlay = () => {
     return winner
       ? console.log(`Winner is ${winner}!!!!!`)
@@ -53,18 +57,21 @@ const GameBoard = () => {
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={0}
+          gameOver={Boolean(winner)}
         />
         <Game
           next={nextPlayer}
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={1}
+          gameOver={Boolean(winner)}
         />
         <Game
           next={nextPlayer}
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={2}
+          gameOver={Boolean(winner)}
         />
       </div>
       <div className="flex justify-center">
@@ -73,18 +80,21 @@ const GameBoard = () => {
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={3}
+          gameOver={Boolean(winner)}
         />
         <Game
           next={nextPlayer}
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={4}
+          gameOver={Boolean(winner)}
         />
         <Game
           next={nextPlayer}
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={5}
+          gameOver={Boolean(winner)}
         />
       </div>
       <div className="flex justify-center">
@@ -93,18 +103,21 @@ const GameBoard = () => {
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={6}
+          gameOver={Boolean(winner)}
         />
         <Game
           next={nextPlayer}
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={7}
+          gameOver={Boolean(winner)}
         />
         <Game
           next={nextPlayer}
           onPlay={onPlay}
           biggerBoardUpdate={updateSquare}
           position={8}
+          gameOver={Boolean(winner)}
         />
       </div>
     </div>

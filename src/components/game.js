@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles.css";
 
-const Game = ({ next, onPlay, biggerBoardUpdate, position }) => {
+const Game = ({ next, onPlay, biggerBoardUpdate, position, gameOver }) => {
   const [squares, setSquares] = React.useState(Array(9).fill(null));
 
   const winner = calculateWinner(squares);
@@ -18,7 +18,7 @@ const Game = ({ next, onPlay, biggerBoardUpdate, position }) => {
   }
 
   function selectSquare(square) {
-    if (winner || squares[square]) {
+    if (winner || squares[square] || gameOver) {
       return;
     }
     const squaresCopy = [...squares];
