@@ -3,7 +3,10 @@ import Game from "./game";
 
 const GameBoard = () => {
   const [nextPlayer, setNextPlayer] = React.useState("X");
-  const [squares, setSquares] = React.useState(Array(9).fill(null));
+  const [squares, setSquares] = React.useState(
+    JSON.parse(window.localStorage.getItem("bigGameboardSquares")) ||
+      Array(9).fill(null)
+  );
 
   const winner = calculateWinner(squares);
 
@@ -43,9 +46,13 @@ const GameBoard = () => {
     return winner ? console.log(`Winner is ${winner}!!!!!`) : null;
   }, [winner]);
 
+  React.useEffect(() => {
+    window.localStorage.setItem("bigGameboardSquares", JSON.stringify(squares));
+  });
+
   const onPlay = () => {
     return winner
-      ? console.log(`Winner is ${winner}!!!!!`)
+      ? console.log(`Winner is ${winner}, game over!`)
       : setNextPlayer((currentPlayer) => (currentPlayer === "X" ? "O" : "X"));
   };
 

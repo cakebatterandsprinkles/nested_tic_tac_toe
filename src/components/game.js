@@ -2,7 +2,11 @@ import React from "react";
 import "../styles.css";
 
 const Game = ({ next, onPlay, biggerBoardUpdate, position, gameOver }) => {
-  const [squares, setSquares] = React.useState(Array(9).fill(null));
+  const [squares, setSquares] = React.useState(
+    JSON.parse(
+      window.localStorage.getItem(`tinyGameboardSquares${position}`)
+    ) || Array(9).fill(null)
+  );
 
   const winner = calculateWinner(squares);
 
@@ -56,6 +60,13 @@ const Game = ({ next, onPlay, biggerBoardUpdate, position, gameOver }) => {
   React.useEffect(() => {
     biggerBoardUpdate(position, winner);
   }, [winner, position]);
+
+  React.useEffect(() => {
+    window.localStorage.setItem(
+      `tinyGameboardSquares${position}`,
+      JSON.stringify(squares)
+    );
+  });
 
   return winner ? (
     <div className="relative">
